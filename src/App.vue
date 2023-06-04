@@ -1,47 +1,43 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <v-app style="background-color: black">
+    <Nav></Nav>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div class="banner">
+      <v-img :src="getImageUrl('banner.PNG')" alt="banner"></v-img>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <v-main>
+      <v-container fluid>
+        <Home> </Home>
+      </v-container>
+    </v-main>
+
+    <Footer> </Footer>
+  </v-app>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+<style>
+.banner {
+  margin-top: 64px;
 }
 </style>
+
+<script>
+import Nav from "./components/Nav.vue";
+import Home from "./components/Home.vue";
+import Footer from "./components/Footer.vue";
+
+export default {
+  name: "App",
+  components: {
+    Nav,
+    Home,
+    Footer,
+  },
+  methods: {
+    getImageUrl(imagePath) {
+      return window.location.origin + "/" + imagePath;
+    },
+  },
+};
+</script>
